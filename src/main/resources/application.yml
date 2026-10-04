@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: liberbook
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/liberbook}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
+  jpa:
+    hibernate:
+      ddl-auto: validate   # nunca "update"/"create" — o schema evolui só via Flyway
+    show-sql: false
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+
+server:
+  port: ${PORT:8080}
+
+jwt:
+  secret: ${JWT_SECRET:troque-este-segredo-antes-de-ir-para-producao}
+  expiration-minutes: 60
